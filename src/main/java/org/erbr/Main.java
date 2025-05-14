@@ -13,13 +13,15 @@ public class Main {
         ObjectMapper mapper = new ObjectMapper();
 
         try {
-
             List<Pessoa> usuarios = mapper.readValue(new File("usuarios_1000.json"), mapper.getTypeFactory().constructCollectionType(List.class, Pessoa.class));
 
-            System.out.println(usuarios);
+            usuarios.stream().filter(p -> p.getAge() > 45).forEach(System.out::println);
+
 
         } catch (IOException e) {
+
             e.printStackTrace();
+
         }
     }
 }
