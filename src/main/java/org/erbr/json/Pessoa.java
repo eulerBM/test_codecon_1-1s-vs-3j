@@ -46,6 +46,6 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return "Pessoa{nome='" + this.getName() + "', idade=" + this.getAge() + "}";
+        return "Pessoa{nome='" + this.getName() + "', idade=" + this.getAge() + ", pontos=" + this.getScore() + ", status=" + this.isActive() +  "}";
     }
 }
