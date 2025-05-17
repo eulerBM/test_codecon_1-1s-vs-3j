@@ -4,6 +4,8 @@ import org.erbr.json.Pessoa;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class mainService {
 
@@ -21,6 +23,24 @@ public class mainService {
         long time = getDateAfter.getTime() - getDateBefore.getTime();
 
         System.out.println("Tempo em milissegundos: " + time);
+
+    }
+
+    public static void getTopCountries(List<Pessoa> usuarios){
+
+        var getSuperUsers = usuarios.stream()
+                .filter(pessoa -> pessoa.getScore() >= 900 && pessoa.isActive())
+                .collect(Collectors.groupingBy(Pessoa::getCountry, Collectors.counting()))
+                .entrySet()
+                .stream()
+                .sorted(Map.Entry.<String, Long>comparingByValue().reversed())
+                .limit(5)
+                .toList();
+
+        getSuperUsers.forEach(entry ->
+                System.out.println("País: " + entry.getKey() + " - Superusuários: " + entry.getValue()));
+
+
 
     }
 }

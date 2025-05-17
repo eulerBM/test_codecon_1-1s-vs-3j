@@ -16,7 +16,7 @@ public class Main {
         try {
             List<Pessoa> usuarios = mapper.readValue(new File("usuarios_1000.json"), mapper.getTypeFactory().constructCollectionType(List.class, Pessoa.class));
 
-            mainService.getSuperUsers(usuarios);
+            mainService.getTopCountries(usuarios);
 
 
         } catch (IOException e) {
