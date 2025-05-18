@@ -1,7 +1,9 @@
 package org.erbr.services;
 
 import org.erbr.json.Pessoa;
+import org.erbr.json.Team;
 
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -41,6 +43,17 @@ public class mainService {
                 System.out.println("País: " + entry.getKey() + " - Superusuários: " + entry.getValue()));
 
 
+
+    }
+
+    public static void getTeamInsights(List<Pessoa> usuarios){
+
+        var getTeamName = usuarios.stream()
+                .collect(Collectors.groupingBy(Pessoa::getTeam, Collectors.counting()))
+                .entrySet();
+
+        getTeamName.forEach(entry ->
+                System.out.println("Total de membros: " + entry.getValue()));
 
     }
 }
