@@ -49,11 +49,10 @@ public class mainService {
     public static void getTeamInsights(List<Pessoa> usuarios){
 
         var getTeamName = usuarios.stream()
-                .collect(Collectors.groupingBy(Pessoa::getTeam, Collectors.counting()))
-                .entrySet();
-
-        getTeamName.forEach(entry ->
-                System.out.println("Total de membros: " + entry.getValue()));
+                .filter(pessoa -> pessoa.getTeam() != null && pessoa.getTeam().getName() != null)
+                .collect(Collectors.groupingBy(pessoa -> pessoa.getTeam().getName()))
+                .entrySet()
+                .stream()
 
     }
 }
