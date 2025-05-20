@@ -53,7 +53,9 @@ public class mainService {
                 .collect(Collectors.groupingBy(pessoa -> pessoa.getTeam().getName()))
                 .entrySet()
                 .stream()
-                .map(entry -> {})
+                .map(entry -> {
+
+                })
 
     }
 }
